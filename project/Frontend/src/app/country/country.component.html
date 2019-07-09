@@ -1,0 +1,44 @@
+<div class="container text-center">
+  <h1>{{title}}</h1>
+</div>
+<div class="container">
+  <div class="row">
+  
+    <div class="search-hero">
+        <form (keydown.enter)="onKeydown($event)" >
+            <label>Search Country by name:</label>
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchName" autocomplete="off" placeholder="Start searching by country">
+
+        </form>
+      
+    </div>
+   <div class="search-hero">
+        <label>Search Country by ISO:</label>
+      <input class="form-control" type="text"  name="search" [(ngModel)]="searchAlpha2_code" autocomplete="off" placeholder="Start searching by country ISO">
+    </div> 
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Alpha2_code</th>
+        <th>Alpha3_code</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of countryList | filter:searchName">      
+        <td>{{item.name}}</td>
+        <td>{{item.alpha2_code}}</td>
+        <td>{{item.alpha3_code}}</td>
+       
+      </tr>
+     <tr *ngFor="let item of countryList | filter:searchAlpha2_code">      
+    
+        <td>{{item.alpha2_code}}</td>
+        <td>{{item.alpha3_code}}</td>
+       
+      </tr> 
+      </tbody>
+    </table>
+
+  </div>
+</div>
